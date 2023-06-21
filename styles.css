@@ -1,0 +1,101 @@
+#mainContainer {
+    display: flex;
+    flex: 1 1 auto;
+    border: solid 1px gray;
+    flex-direction: column;
+    gap: 10px;
+    padding: 5px;
+}
+
+#displayContainer{
+    display: flex;
+    flex: 1 1 auto;
+    border: solid 1px black;
+    justify-content: end;
+    padding: 4px;
+}
+
+#zoneTwo {
+    display: flex;
+    flex: 3 3 auto;
+    border: solid 1px red;
+}
+
+#numbersContainer {
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+    border: solid 1 px gray;
+    gap: 5px;
+    padding: 5px;
+}
+
+#operatorsContainer {
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+    gap: 5px;
+    padding: 5px;
+}
+
+.numbers {
+    display: flex;
+    flex: 5 5 auto;
+    aspect-ratio: 1/1;
+}
+
+.operators {
+    display: flex;
+    flex: 1 1 auto;
+    border: solid 1px green;
+    gap: 5px;
+    padding: 5px;
+}
+
+#thirdRowContainer {
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: row;
+    border: solid 1px black;
+    gap: 5px;
+    padding: 5px;
+}
+
+#secondRowContainer {
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: row;
+    border: solid 1px black;
+    gap: 5px;
+    padding: 5px;
+}
+
+#firstRowContainer {
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: row;
+    border: solid 1px black;
+    gap: 5px;
+    padding: 5px;
+}
+
+#zero {
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: row;
+    aspect-ratio: 3/1;
+}
+
+#one,
+#two,
+#three,
+#four,
+#five,
+#six,
+#seven,
+#eight,
+#nine,
+#zero {
+    border: solid 1px blue;
+    padding: 5px;
+}
