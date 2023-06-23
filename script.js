@@ -103,14 +103,11 @@ buttons.forEach((button) => {
             case 'substract':
             case 'multiply':
             case 'divide':
-                if (!result) {
-                    operator = button.textContent;
-                } else {
-                    firstNumber = result;
-                    result = '';
-                    operator = button.textContent;
+                if (firstNumber && secondNumber) {
+                    operate(operator, firstNumber, secondNumber);
+                    displayResult();
                 }
-                console.log(operator);
+                operator = button.textContent;
                 displayTextUpdate();
                 break;
             case 'equal':
