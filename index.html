@@ -5,39 +5,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
-    <script src="script.js" type="script/javascript" defer></script>
+    <script type="text/javascript" src="script.js" defer></script>
     <title>TOP-Calculator</title>
 </head>
 
 <body>
     <div id="mainContainer">
-        <div id="displayContainer">0</div> <!-- zone one -->
+        <div id="displayContainer">
+            <div id="displayContainerOne">0</div>
+            <div id="displayContainerTwo"></div>
+            <div id="displayContainerThree"></div>
+            <div id="displayContainerResult"></div>
+        </div>
         <div id="zoneTwo">
             <div id="numbersContainer">
                 <div id="thirdRowContainer">
-                    <div class="numbers" id="seven">7</div>
-                    <div class="numbers" id="eight">8</div>
-                    <div class="numbers" id="nine">9</div>
+                    <div class="numbers buttons" id="seven">7</div>
+                    <div class="numbers buttons" id="eight">8</div>
+                    <div class="numbers buttons" id="nine">9</div>
                 </div>
                 <div id="secondRowContainer">
-                    <div class="numbers" id="four">4</div>
-                    <div class="numbers" id="five">5</div>
-                    <div class="numbers" id="six">6</div>
+                    <div class="numbers buttons" id="four">4</div>
+                    <div class="numbers buttons" id="five">5</div>
+                    <div class="numbers buttons" id="six">6</div>
                 </div>
                 <div id="firstRowContainer">
-                    <div class="numbers" id="one">1</div>
-                    <div class="numbers" id="two">2</div>
-                    <div class="numbers" id="three">3</div>
+                    <div class="numbers buttons" id="one">1</div>
+                    <div class="numbers buttons" id="two">2</div>
+                    <div class="numbers buttons" id="three">3</div>
                 </div>
-                <div id="zero">0</div>
+                <div class="buttons" id="zero">0</div>
             </div>
             <div id="operatorsContainer">
-                <div class="operators" id="clear">CLEAR</div>
-                <div class="operators" id="add">+</div>
-                <div class="operators" id="substract">-</div>
-                <div class="operators" id="multiply">*</div>
-                <div class="operators" id="divide">/</div>
-                <div class="operators" id="equal">=</div>
+                <div class="operators buttons" id="clear">CLEAR</div>
+                <div class="operators buttons" id="add">+</div>
+                <div class="operators buttons" id="substract">-</div>
+                <div class="operators buttons" id="multiply">*</div>
+                <div class="operators buttons" id="divide">/</div>
+                <div class="operators buttons" id="equal">=</div>
             </div>
         </div>
 

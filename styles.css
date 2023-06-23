@@ -38,17 +38,34 @@
     padding: 5px;
 }
 
-.numbers {
-    display: flex;
-    flex: 5 5 auto;
-    aspect-ratio: 1/1;
-}
-
 .operators {
     display: flex;
     flex: 1 1 auto;
     border: solid 1px green;
     gap: 5px;
+    padding: 5px 15px;
+    justify-content: right;
+    align-items: end;
+}
+
+.numbers {
+    display: flex;
+    flex: 5 5 auto;
+    aspect-ratio: 1/1;
+    justify-content: right;
+    align-items: end;
+    border: solid 1px blue;
+    padding: 5px;
+}
+
+#zero {
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: row;
+    aspect-ratio: 3/1;
+    justify-content: right;
+    align-items: end;
+    border: solid 1px blue;
     padding: 5px;
 }
 
@@ -76,26 +93,5 @@
     flex-direction: row;
     border: solid 1px black;
     gap: 5px;
-    padding: 5px;
-}
-
-#zero {
-    display: flex;
-    flex: 1 1 auto;
-    flex-direction: row;
-    aspect-ratio: 3/1;
-}
-
-#one,
-#two,
-#three,
-#four,
-#five,
-#six,
-#seven,
-#eight,
-#nine,
-#zero {
-    border: solid 1px blue;
     padding: 5px;
 }
