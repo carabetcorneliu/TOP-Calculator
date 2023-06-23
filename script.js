@@ -3,6 +3,7 @@ const substract = (a, b) => a - b;
 const multiply = (a, b) => a * b;
 const divide = (a, b) => a / b;
 
+const buttons = document.querySelectorAll('.buttons');
 const displayContainerOne = document.querySelector('#displayContainerOne');
 const displayContainerTwo = document.querySelector('#displayContainerTwo');
 const displayContainerThree = document.querySelector('#displayContainerThree');
@@ -28,6 +29,7 @@ const operate = (op, a, b) => {
             break;
         }
     }
+    result = round(result, 10);
 }
 
 const clickNumber = (number) => {
@@ -79,7 +81,10 @@ const displayTextUpdate = () => {
     }
 }
 
-const buttons = document.querySelectorAll('.buttons');
+const round = (number, decimalPlaces) => {
+    const factorOfTen = Math.pow(10, decimalPlaces);
+    return Math.round(number * factorOfTen) / factorOfTen;
+}
 
 buttons.forEach((button) => {
     button.addEventListener('click', () => {
