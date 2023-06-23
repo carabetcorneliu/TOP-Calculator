@@ -54,6 +54,7 @@ const clickClear = () => {
     firstNumber = '';
     secondNumber = '';
     operator = '';
+    result = '';
     displayContainerOne.textContent = '0';
     displayContainerTwo.textContent = '';
     displayContainerThree.textContent = '';
@@ -89,7 +90,7 @@ const round = (number, decimalPlaces) => {
 buttons.forEach((button) => {
     button.addEventListener('click', () => {
         switch (button.id) {
-            case 'clear': 
+            case 'clear':
                 clickClear();
                 break;
             case 'one':
@@ -116,9 +117,11 @@ buttons.forEach((button) => {
                 displayTextUpdate();
                 break;
             case 'equal':
-                operate(operator, firstNumber, secondNumber);
-                displayResult();
-                break;
+                if (firstNumber && secondNumber) {
+                    operate(operator, firstNumber, secondNumber);
+                    displayResult();
+                    break;
+                }
         }
     });
 });
