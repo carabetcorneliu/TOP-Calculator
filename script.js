@@ -3,9 +3,13 @@ const substract = (a, b) => a - b;
 const multiply = (a, b) => a * b;
 const divide = (a, b) => a / b;
 
+const displayContainerOne = document.querySelector('#displayContainerOne');
+const displayContainerTwo = document.querySelector('#displayContainerTwo');
+const displayContainerThree = document.querySelector('#displayContainerThree');
+
 let firstNumber;
 let operator;
-let secondNumber;
+let secondNumber
 let result;
 
 const operate = (op, a, b) => {
@@ -26,24 +30,49 @@ const operate = (op, a, b) => {
     }
 }
 
-const displayResult = () => {
-    displayContainerOne.textContent = "";
-    displayContainerTwo.textContent = "";
-    displayContainerThree.textContent = "";
-    displayContainerResult.textContent = result;
+const clickNumber = (number) => {
+    if (!operator) {
+        if (!firstNumber) firstNumber = number;
+        else firstNumber += number;
+    } else {
+        if (!secondNumber) secondNumber = number;
+        else secondNumber += number;
+    }
+    displayTextUpdate();
 }
 
-const displayContainerOne = document.querySelector('#displayContainerOne');
-const displayContainerTwo = document.querySelector('#displayContainerTwo');
-const displayContainerThree = document.querySelector('#displayContainerThree');
-const displayContainerResult = document.querySelector('#displayContainerResult');
+const clickOperator = (operator) => {
+    operator = operator;
+    firstNumber = secondNumber;
+    secondNumber = '';
+    displayTextUpdate();
+}
+
+const clickClear = () => {
+    firstNumber = '';
+    secondNumber = '';
+    operator = '';
+    displayContainerOne.textContent = '0';
+    displayContainerTwo.textContent = '';
+    displayContainerThree.textContent = '';
+    displayTextUpdate();
+}
+
+const displayResult = () => {
+    displayContainerOne.textContent = result;
+    firstNumber = result;
+    displayContainerTwo.textContent = "";
+    operator = '';
+    displayContainerThree.textContent = "";
+    secondNumber = '';
+}
 
 const displayTextUpdate = () => {
     if (firstNumber) {
         displayContainerOne.textContent = firstNumber;
     }
     if (operator) {
-        displayContainerTwo.textContent = " " + operator + " ";
+        displayContainerTwo.textContent = operator;
     }
     if (secondNumber) {
         displayContainerThree.textContent = secondNumber;
@@ -54,52 +83,40 @@ const buttons = document.querySelectorAll('.buttons');
 
 buttons.forEach((button) => {
     button.addEventListener('click', () => {
-        if (!operator) {
-            switch (button.id) {
-                case 'one':
-                case 'two':
-                case 'three':
-                case 'four':
-                case 'five':
-                case 'six':
-                case 'seven':
-                case 'eight':
-                case 'nine':
-                case 'zero':
-                    if (!firstNumber) firstNumber = button.textContent;
-                    else firstNumber += button.textContent;
-                    displayTextUpdate();
-                    break;
-                case 'add':
-                case 'substract':
-                case 'multiply':
-                case 'divide':
+        switch (button.id) {
+            case 'clear': 
+                clickClear();
+                break;
+            case 'one':
+            case 'two':
+            case 'three':
+            case 'four':
+            case 'five':
+            case 'six':
+            case 'seven':
+            case 'eight':
+            case 'nine':
+            case 'zero':
+                clickNumber(button.textContent);
+                break;
+            case 'add':
+            case 'substract':
+            case 'multiply':
+            case 'divide':
+                if (!result) {
                     operator = button.textContent;
-                    displayTextUpdate();
-                    break;
-            }
-        }
-        else if (operator) {
-            switch (button.id) {
-                case 'one':
-                case 'two':
-                case 'three':
-                case 'four':
-                case 'five':
-                case 'six':
-                case 'seven':
-                case 'eight':
-                case 'nine':
-                case 'zero':
-                    if (!secondNumber) secondNumber = button.textContent;
-                    else secondNumber += button.textContent;
-                    displayTextUpdate();
-                    break;
-                case 'equal':
-                    operate(operator, firstNumber, secondNumber);
-                    displayResult();
-                    break;
-            }
+                } else {
+                    firstNumber = result;
+                    result = '';
+                    operator = button.textContent;
+                }
+                console.log(operator);
+                displayTextUpdate();
+                break;
+            case 'equal':
+                operate(operator, firstNumber, secondNumber);
+                displayResult();
+                break;
         }
     });
 });
