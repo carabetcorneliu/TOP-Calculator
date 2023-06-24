@@ -8,10 +8,10 @@ const displayContainerOne = document.querySelector('#displayContainerOne');
 const displayContainerTwo = document.querySelector('#displayContainerTwo');
 const displayContainerThree = document.querySelector('#displayContainerThree');
 
-let firstNumber;
-let operator;
-let secondNumber
-let result;
+let firstNumber = '';
+let operator = '';
+let secondNumber = ''
+let result = '';
 
 const operate = (op, a, b) => {
     switch (op) {
@@ -33,21 +33,25 @@ const operate = (op, a, b) => {
 }
 
 const clickNumber = (number) => {
-    if (!operator) {
-        if (!firstNumber) firstNumber = number;
-        else firstNumber += number;
-    } else {
-        if (!secondNumber) secondNumber = number;
-        else secondNumber += number;
+    if (!operator && !secondNumber && (result === '')) {
+        firstNumber += number;
+        displayTextUpdate();
+    } else if (operator && firstNumber) {
+        secondNumber += number;
+        displayTextUpdate();
     }
-    displayTextUpdate();
 }
 
-const clickOperator = (operator) => {
-    operator = operator;
-    firstNumber = secondNumber;
-    secondNumber = '';
-    displayTextUpdate();
+const clickOperator = (oper) => {
+    if (firstNumber && secondNumber) {
+        operate(oper, firstNumber, secondNumber);
+        displayResult();
+        operator = oper;
+        displayTextUpdate();
+    } else if (firstNumber && !secondNumber) {
+        operator = oper;
+        displayTextUpdate();
+    }
 }
 
 const clickClear = () => {
@@ -102,19 +106,19 @@ buttons.forEach((button) => {
             case 'seven':
             case 'eight':
             case 'nine':
-            case 'zero':
                 clickNumber(button.textContent);
+                break;
+            case 'zero':
+                if (!operator && !secondNumber && firstNumber != '')
+                    clickNumber(button.textContent);
+                else if (operator && secondNumber != '')
+                    clickNumber(button.textContent);
                 break;
             case 'add':
             case 'substract':
             case 'multiply':
             case 'divide':
-                if (firstNumber && secondNumber) {
-                    operate(operator, firstNumber, secondNumber);
-                    displayResult();
-                }
-                operator = button.textContent;
-                displayTextUpdate();
+                clickOperator(button.textContent);
                 break;
             case 'equal':
                 if (firstNumber && secondNumber) {
