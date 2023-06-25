@@ -41,7 +41,10 @@ const clickNumber = (number) => {
         firstNumber += number;
         displayTextUpdate();
     } else if (operator && firstNumber) {
-        secondNumber += number;
+        if (secondNumber === '0')
+            secondNumber = number;
+        else
+            secondNumber += number;
         displayTextUpdate();
     }
 }
@@ -68,6 +71,28 @@ const clickClear = () => {
     displayContainerOne.textContent = '0';
     displayContainerTwo.textContent = '';
     displayContainerThree.textContent = '';
+    displayTextUpdate();
+}
+
+const clickBackspace = () => {
+    let temp;
+
+    if (!operator && firstNumber.length > 0) {
+        if (firstNumber.length > 1) {
+            temp = firstNumber.slice(0, -1);
+            firstNumber = temp;
+        }
+        else {
+            displayContainerOne.textContent = '0';
+            firstNumber = '';
+        }
+    } else if (operator && secondNumber.length > 0) {
+        if (secondNumber.length > 1)
+            temp = secondNumber.slice(0, -1);
+        else
+            temp = '0';
+        secondNumber = temp;
+    }
     displayTextUpdate();
 }
 
@@ -132,6 +157,10 @@ buttons.forEach((button) => {
                     decimalSecond = true;
                 }
                 displayTextUpdate();
+                break;
+            case 'backspace':
+                if (secondNumber.length > 1 || firstNumber.length > 1)
+                    clickBackspace();
                 break;
             case 'add':
             case 'substract':
