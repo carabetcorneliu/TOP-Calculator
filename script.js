@@ -12,6 +12,8 @@ let firstNumber = '';
 let operator = '';
 let secondNumber = ''
 let result = '';
+let decimalFirst = false;
+let decimalSecond = false;
 
 const operate = (op, a, b) => {
     switch (op) {
@@ -29,6 +31,8 @@ const operate = (op, a, b) => {
             break;
         }
     }
+    decimalFirst = true;
+    decimalSecond = false;
     result = round(result, 10);
 }
 
@@ -59,6 +63,8 @@ const clickClear = () => {
     secondNumber = '';
     operator = '';
     result = '';
+    decimalFirst = false;
+    decimalSecond = false;
     displayContainerOne.textContent = '0';
     displayContainerTwo.textContent = '';
     displayContainerThree.textContent = '';
@@ -113,6 +119,19 @@ buttons.forEach((button) => {
                     clickNumber(button.textContent);
                 else if (operator && secondNumber != '')
                     clickNumber(button.textContent);
+                break;
+            case 'decimal':
+                if (!operator && !secondNumber && decimalFirst == false) {
+                    if (firstNumber == '') firstNumber = '0.';
+                    else firstNumber += '.';
+                    decimalFirst = true;
+                }
+                else if (operator && decimalSecond == false) {
+                    if (secondNumber == '') secondNumber = '0.';
+                    else secondNumber += '.';
+                    decimalSecond = true;
+                }
+                displayTextUpdate();
                 break;
             case 'add':
             case 'substract':
