@@ -12,6 +12,7 @@
 #displayContainer{
     display: flex;
     flex: 1 1 auto;
+    overflow: hidden;
     border: solid 1px black;
     justify-content: end;
     padding: 10px 8px;
