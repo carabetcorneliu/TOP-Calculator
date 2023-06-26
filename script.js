@@ -77,12 +77,12 @@ const clickClear = () => {
 const clickBackspace = () => {
     let temp;
 
-    if (!operator && firstNumber.length > 0) {
+    if (!operator) {
         if (firstNumber.length > 1) {
             temp = firstNumber.slice(0, -1);
             firstNumber = temp;
         }
-        else {
+        else if (firstNumber.length == '1'){
             displayContainerOne.textContent = '0';
             firstNumber = '';
         }
@@ -159,7 +159,7 @@ buttons.forEach((button) => {
                 displayTextUpdate();
                 break;
             case 'backspace':
-                if (secondNumber.length > 1 || firstNumber.length > 1)
+                if (secondNumber.length > 0 || firstNumber.length > 0)
                     clickBackspace();
                 break;
             case 'add':
@@ -178,3 +178,10 @@ buttons.forEach((button) => {
     });
 });
 
+window.addEventListener('keydown', function(e) {
+    const key = document.querySelector(`.buttons[data-key="${e.keyCode}"]`);
+    if ((e.keyCode >= 96 && e.keyCode <= 107) || (e.keyCode >= 109 && e.keyCode <= 111)
+        || e.keyCode == 13) 
+        key.click();
+});
+  

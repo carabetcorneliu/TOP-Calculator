@@ -6,6 +6,7 @@
     flex-direction: column;
     max-width: 680px;
     padding: 10px;
+    background-color: #9BB7D4;
 }
 
 #displayContainer{
@@ -40,7 +41,7 @@
 .operators {
     display: flex;
     flex: 1 1 auto;
-    border: solid 2px green;
+    border: solid 2px #00A170;
     justify-content: center;
     align-items: center;
 }
@@ -51,7 +52,6 @@
     aspect-ratio: 1/1;
     justify-content: center;
     align-items: center;
-    border: solid 2px blue;
 }
 
 #zero {
@@ -61,7 +61,6 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    border: solid 2px blue;
 }
 
 #decimal {
@@ -69,7 +68,13 @@
     flex: 1 2 auto;
     justify-content: center;
     align-items: center;
-    border: solid 2px blue;
+    
+}
+
+.numbers,
+#zero,
+#decimal {
+    border: solid 2px #0072B5;
 }
 
 #zeroRowContainer,
@@ -90,11 +95,11 @@
 .buttons {
     font-size: 32px;
     border-radius: 12px;
-    background-color: rgba(128, 127, 127, 0.1);
+    background-color: rgba(128, 127, 127, 0.2);
 }
 
 #clear {
-    background-color: rgba(0, 0, 255, 1);
+    background-color: #0072B5;
     color: white;
 }
 
