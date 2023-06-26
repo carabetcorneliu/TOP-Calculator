@@ -179,9 +179,9 @@ buttons.forEach((button) => {
 });
 
 window.addEventListener('keydown', function(e) {
-    const key = document.querySelector(`.buttons[data-key="${e.keyCode}"]`);
-    if ((e.keyCode >= 96 && e.keyCode <= 107) || (e.keyCode >= 109 && e.keyCode <= 111)
-        || e.keyCode == 13) 
-        key.click();
+    const keyClicked = document.querySelector(`.buttons[data-key="${e.key}"]`);
+    if ((e.key >= 0 && e.key <= 9) || e.key === 'Backspace' || e.key === 'Delete'
+        || e.key === 'Enter' || e.key === '/' || e.key === '*' || e.key === '-'
+        || e.key === '+' || e.key === '.') 
+        keyClicked.click();
 });
-  
